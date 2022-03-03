@@ -16,7 +16,7 @@ public class MemoController : ControllerBase
     }
 
     [HttpGet]
-    public string prova()
+    public string HealthCheck()
     {
         return "Hello";
     }
