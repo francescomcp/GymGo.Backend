@@ -1,4 +1,5 @@
-﻿using ProgettoPromemoria.Gateway.Infrastructure;
+﻿using MongoDB.Driver;
+using ProgettoPromemoria.Gateway.Infrastructure;
 using ProgettoPromemoria.Gateway.Models.Memo;
 
 namespace ProgettoPromemoria.Gateway.Repositories;
@@ -6,6 +7,7 @@ namespace ProgettoPromemoria.Gateway.Repositories;
 public interface IMemoRepository
 {
     Task Save(PostMemoRequest memo);
+    Task<List<Memo>> GetAll();
 }
 
 public class MemoRepository : IMemoRepository
@@ -21,5 +23,11 @@ public class MemoRepository : IMemoRepository
     {
         var collection = _connection.GetReadyConnectionAsync().GetCollection<PostMemoRequest>("Memo");
         await collection.InsertOneAsync(memo);
+    }
+
+    public async Task<List<Memo>> GetAll()
+    {
+        var collection = _connection.GetReadyConnectionAsync().GetCollection<Memo>("Memo");
+        return await collection.Find(_ => true).ToListAsync();
     }
 }

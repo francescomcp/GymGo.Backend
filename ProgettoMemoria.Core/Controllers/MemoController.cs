@@ -15,10 +15,17 @@ public class MemoController : ControllerBase
         _service = service;
     }
 
-    [HttpGet]
+    [HttpGet("health")]
     public string HealthCheck()
     {
         return "Hello";
+    }
+
+    [HttpGet("all")]
+    public async Task<IActionResult> GetAll()
+    {
+        var list = await _service.GetAll();
+        return Ok(list);
     }
 
     [HttpPost]

@@ -6,6 +6,7 @@ namespace ProgettoPromemoria.Core.Services;
 public interface IMemoService
 {
     Task Save(PostMemoRequest memo);
+    Task<List<Memo>> GetAll();
 }
 
 public class MemoService : IMemoService
@@ -17,4 +18,6 @@ public class MemoService : IMemoService
         _repository = repository;
     }
     public Task Save(PostMemoRequest memo) => _repository.Save(memo);
+
+    public async Task<List<Memo>> GetAll() => await _repository.GetAll();
 }
