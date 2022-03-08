@@ -8,6 +8,7 @@ public interface IMemoRepository
 {
     Task Save(PostMemoRequest memo);
     Task<List<Memo>> GetAll();
+    Task<Memo> GetById(string id);
 }
 
 public class MemoRepository : IMemoRepository
@@ -29,5 +30,11 @@ public class MemoRepository : IMemoRepository
     {
         var collection = _connection.GetReadyConnectionAsync().GetCollection<Memo>("Memo");
         return await collection.Find(_ => true).ToListAsync();
+    }
+
+    public async Task<Memo> GetById(string id)
+    {
+        var collection = _connection.GetReadyConnectionAsync().GetCollection<Memo>("Memo");
+        return await collection.Find(x => x.Id == id).FirstOrDefaultAsync();
     }
 }
