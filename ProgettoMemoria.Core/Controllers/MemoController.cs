@@ -25,7 +25,18 @@ public class MemoController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var list = await _service.GetAll();
-        return Ok(list);
+        return list is not null 
+            ? Ok(list) 
+            : NotFound();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(string id)
+    {
+        var memo = await _service.GetById(id);
+        return memo is not null 
+            ? Ok(memo) 
+            : NotFound();
     }
 
     [HttpPost]
