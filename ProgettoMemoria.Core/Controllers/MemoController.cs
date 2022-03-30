@@ -29,20 +29,18 @@ public class MemoController : ControllerBase
             ? Ok(list) 
             : NotFound();
     }
-
-    [HttpGet("{id}")]
+    [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(string id)
     {
-        var memo = await _service.GetById(id);
-        return memo is not null 
-            ? Ok(memo) 
-            : NotFound();
+        var result = await _service.GetById(id);
+        return result is not null
+            ? Ok(result)
     }
 
     [HttpPost]
     public async Task<IActionResult> Save(PostMemoRequest memo)
     {
         await _service.Save(memo);
-        return Ok(memo);
+        return NoContent();
     }
 }

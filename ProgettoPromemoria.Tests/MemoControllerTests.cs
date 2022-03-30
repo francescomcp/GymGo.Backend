@@ -31,7 +31,7 @@ public class MemoControllerTests
     public async Task SaveWithoutExpirationTest()
     {
         var item = new PostMemoRequest { Description = "Prova", Name = "Prova" };
-        var result = await _controller.Save(item) as OkObjectResult;
+        var result = await _controller.Save(item);
         Assert.IsNotNull(result);
     }
 
