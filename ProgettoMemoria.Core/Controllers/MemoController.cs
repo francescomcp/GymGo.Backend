@@ -25,13 +25,15 @@ public class MemoController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var list = await _service.GetAll();
-        return Ok(list);
+        return list is not null 
+            ? Ok(list) 
+            : NotFound();
     }
 
     [HttpPost]
     public async Task<IActionResult> Save(PostMemoRequest memo)
     {
         await _service.Save(memo);
-        return Ok(memo);
+        return NoContent();
     }
 }

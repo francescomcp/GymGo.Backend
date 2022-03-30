@@ -33,14 +33,14 @@ public class MemoControllerTests
     public async Task SaveWithoutExpirationTest()
     {
         var item = new PostMemoRequest { Description = "Prova", Name = "Prova" };
-        var result = await _controller.Save(item) as OkObjectResult;
+        var result = await _controller.Save(item);
         Assert.IsNotNull(result);
     }
 
     [Test]
     public async Task GetAllTest()
     {
-        var result = await _controller.GetAll() as OkObjectResult;
+        var result = await _controller.GetAll();
         Assert.IsNotNull(result);
         //Assert.IsInstanceOf(typeof(List<Memo>), result.Value);
     }
