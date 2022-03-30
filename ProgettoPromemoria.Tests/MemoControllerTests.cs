@@ -4,9 +4,7 @@ using NUnit.Framework;
 using ProgettoPromemoria.Controllers;
 using ProgettoPromemoria.Core.Services;
 using ProgettoPromemoria.Gateway.Models.Memo;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web.Http.Results;
 
 namespace ProgettoPromemoria.Tests;
 
@@ -42,6 +40,12 @@ public class MemoControllerTests
     {
         var result = await _controller.GetAll();
         Assert.IsNotNull(result);
-        //Assert.IsInstanceOf(typeof(List<Memo>), result.Value);
+    }
+
+    [Test]
+    public async Task GetByIdTest()
+    {
+        var result = await _controller.GetById("62189db5dfb5cfb27a965f3c");
+        Assert.IsNotNull(result);
     }
 }
