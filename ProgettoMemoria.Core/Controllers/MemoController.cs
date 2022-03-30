@@ -35,6 +35,7 @@ public class MemoController : ControllerBase
         var result = await _service.GetById(id);
         return result is not null
             ? Ok(result)
+            : NotFound();   
     }
 
     [HttpPost]
