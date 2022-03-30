@@ -7,6 +7,7 @@ public interface IMemoService
 {
     Task Save(PostMemoRequest memo);
     Task<List<Memo>> GetAll();
+    Task<Memo> GetById(string id);
 }
 
 public class MemoService : IMemoService
@@ -20,4 +21,6 @@ public class MemoService : IMemoService
     public Task Save(PostMemoRequest memo) => _repository.Save(memo);
 
     public async Task<List<Memo>> GetAll() => await _repository.GetAll();
+
+    public async Task<Memo> GetById(string id) => await _repository.GetById(id);
 }

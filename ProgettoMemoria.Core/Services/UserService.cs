@@ -19,7 +19,7 @@ public class UserService : IUserService
     }
     public Task<List<User>> GetAll() => _repository.GetAll();
 
-    public Task<User> GetById(string id) => _repository.GetById(id);
+    public async Task<User> GetById(string id) => await _repository.GetById(id);
 
-    public Task Save(PostUserRequest user) => _repository.Save(user);
+    public async Task Save(PostUserRequest user) => await _repository.Save(user);
 }
