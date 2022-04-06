@@ -52,6 +52,7 @@ public class JwtMiddleware
         catch
         {
             //Fare qualcosa se il login non va a buon fine
+            throw new Exception("Login failed");
         }
     }
 }
