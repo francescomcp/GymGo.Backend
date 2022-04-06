@@ -1,4 +1,4 @@
-﻿namespace ProgettoPromemoria.Configuration;
+﻿namespace GymGo.Configuration;
 
 public class MongoConfiguration
 {

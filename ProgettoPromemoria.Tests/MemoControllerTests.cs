@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using ProgettoPromemoria.Controllers;
-using ProgettoPromemoria.Core.Services;
-using ProgettoPromemoria.Gateway.Models.Memo;
+using GymGo.Controllers;
+using GymGo.Core.Services;
+using GymGo.Gateway.Models.Memo;
 using System.Threading.Tasks;
 
-namespace ProgettoPromemoria.Tests;
+namespace GymGo.Tests;
 
 public class MemoControllerTests
 {

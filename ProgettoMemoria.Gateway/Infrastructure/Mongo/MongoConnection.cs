@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace ProgettoPromemoria.Gateway.Infrastructure.Mongo
+namespace GymGo.Gateway.Infrastructure.Mongo
 {
     public class MongoConnection : IConnectionFactory
     {

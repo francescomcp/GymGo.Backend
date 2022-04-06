@@ -1,7 +1,8 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using ProgettoPromemoria.Bootstrap;
-using ProgettoPromemoria.Configuration;
+using GymGo.Bootstrap;
+using GymGo.Configuration;
+using GymGo.Core.Helpers;
 
 public static class Program
 {
@@ -14,18 +15,35 @@ public static class Program
         builder.Services.AddControllers();
 
         var app = builder.Build();
-        app.UseHttpsRedirection();
-        app.UseAuthorization();
-        app.MapControllers();
+        {
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            // custom jwt auth middleware
+            app.UseMiddleware<JwtMiddleware>();
+
+            app.MapControllers();
+        }
         app.Run();
+
     }
 
     public static ContainerBuilder CreateContainer(this ContainerBuilder containerBuilder, IConfiguration configuration)
     {
-        var mongoConfiguration = new MongoConfiguration { ConnectionString = configuration.GetSection("MongoConnection").GetValue<string>("ConnectionString"),
+        var mongoConfiguration = new MongoConfiguration 
+        { 
+            ConnectionString = configuration.GetSection("MongoConnection").GetValue<string>("ConnectionString"),
             DatabaseName = configuration.GetSection("MongoConnection").GetValue<string>("DatabaseName")
         };
 
-        return containerBuilder.Create(mongoConfiguration);
+        var appSettings = new AppSettings
+        {
+            Secret = configuration.GetSection("AppSettings").GetValue<string>("Secret")
+        };
+
+        return containerBuilder.Create(mongoConfiguration, appSettings);
     }
 }

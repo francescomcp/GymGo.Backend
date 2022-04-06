@@ -1,8 +1,9 @@
-﻿using ProgettoPromemoria.Gateway.Models.Memo;
-using ProgettoPromemoria.Core.Services;
+﻿using GymGo.Gateway.Models.Memo;
+using GymGo.Core.Services;
 using Microsoft.AspNetCore.Mvc;
+using GymGo.Core.Helpers;
 
-namespace ProgettoPromemoria.Controllers;
+namespace GymGo.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -21,6 +22,7 @@ public class MemoController : ControllerBase
         return "Hello";
     }
 
+    [Authorize]
     [HttpGet("all")]
     public async Task<IActionResult> GetAll()
     {
@@ -29,6 +31,8 @@ public class MemoController : ControllerBase
             ? Ok(list) 
             : NotFound();
     }
+
+    [Authorize]
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(string id)
     {
@@ -38,6 +42,7 @@ public class MemoController : ControllerBase
             : NotFound();   
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Save(PostMemoRequest memo)
     {

@@ -1,7 +1,7 @@
-﻿using ProgettoPromemoria.Gateway.Models.Memo;
-using ProgettoPromemoria.Gateway.Repositories;
+﻿using GymGo.Gateway.Models.Memo;
+using GymGo.Gateway.Repositories;
 
-namespace ProgettoPromemoria.Core.Services;
+namespace GymGo.Core.Services;
 
 public interface IMemoService
 {
