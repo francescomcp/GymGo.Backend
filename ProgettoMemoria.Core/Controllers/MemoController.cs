@@ -41,6 +41,16 @@ public class MemoController : ControllerBase
             ? Ok(result)
             : NotFound();   
     }
+    
+    [Authorize]
+    [HttpGet("byUserDay")]
+    public async Task<IActionResult> GetByUserDay(string id, int dayOfWeek)
+    {
+        var result = await _service.GetByUserDay(id, dayOfWeek);
+        return result is not null
+            ? Ok(result)
+            : NotFound();
+    }
 
     [Authorize]
     [HttpPost]

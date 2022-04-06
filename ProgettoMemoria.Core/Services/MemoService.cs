@@ -8,6 +8,7 @@ public interface IMemoService
     Task Save(PostMemoRequest memo);
     Task<List<Memo>> GetAll();
     Task<Memo> GetById(string id);
+    Task<List<Memo>> GetByUserDay(string Id, int dayOfWeek);
 }
 
 public class MemoService : IMemoService
@@ -23,4 +24,6 @@ public class MemoService : IMemoService
     public async Task<List<Memo>> GetAll() => await _repository.GetAll();
 
     public async Task<Memo> GetById(string id) => await _repository.GetById(id);
+
+    public async Task<List<Memo>> GetByUserDay(string Id, int dayOfWeek) => await _repository.GetByUserDay(Id, dayOfWeek);
 }
