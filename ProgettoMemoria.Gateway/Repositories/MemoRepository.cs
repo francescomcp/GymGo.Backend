@@ -9,6 +9,7 @@ public interface IMemoRepository
     Task Save(PostMemoRequest memo);
     Task<List<Memo>> GetAll();
     Task<Memo> GetById(string id);
+    Task<List<Memo>> GetByUserDay(string id, int dayOfWeek);
 }
 
 public class MemoRepository : IMemoRepository
@@ -46,5 +47,11 @@ public class MemoRepository : IMemoRepository
     {
         var collection = _connection.GetReadyConnectionAsync().GetCollection<Memo>("Memo");
         return await collection.Find(x => x.Id == id).FirstOrDefaultAsync();
+    }
+
+    public async Task<List<Memo>> GetByUserDay(string id, int dayOfWeek)
+    {
+        var collection = _connection.GetReadyConnectionAsync().GetCollection<Memo>("Memo");
+        return await collection.Find(x => x.UserId == id && x.DayOfWeek == dayOfWeek).ToListAsync();
     }
 }
