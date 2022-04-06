@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoPromemoria", "ProgettoPromemoria\ProgettoPromemoria.csproj", "{D0110FFB-15BE-429E-86B9-7E261CAF11D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymGo", "ProgettoPromemoria\GymGo.csproj", "{D0110FFB-15BE-429E-86B9-7E261CAF11D3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoPromemoria.Gateway", "ProgettoMemoria.Gateway\ProgettoPromemoria.Gateway.csproj", "{CA6C2D71-902C-4AD1-8181-663437030811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymGo.Gateway", "ProgettoMemoria.Gateway\GymGo.Gateway.csproj", "{CA6C2D71-902C-4AD1-8181-663437030811}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoPromemoria.Core", "ProgettoMemoria.Core\ProgettoPromemoria.Core.csproj", "{24D3F750-2E47-45E1-B49B-38BF43CE04A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymGo.Core", "ProgettoMemoria.Core\GymGo.Core.csproj", "{24D3F750-2E47-45E1-B49B-38BF43CE04A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoPromemoria.Tests", "ProgettoPromemoria.Tests\ProgettoPromemoria.Tests.csproj", "{277539B1-D009-4997-9485-E895767ADF3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymGo.Tests", "ProgettoPromemoria.Tests\GymGo.Tests.csproj", "{277539B1-D009-4997-9485-E895767ADF3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

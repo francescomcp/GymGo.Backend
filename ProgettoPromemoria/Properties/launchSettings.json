@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "ProgettoPromemoria": {
+    "GymGo": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

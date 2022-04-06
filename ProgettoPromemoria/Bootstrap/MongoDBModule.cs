@@ -1,11 +1,9 @@
 ﻿using Autofac;
-using ProgettoPromemoria.Configuration;
-using ProgettoPromemoria.Gateway.Infrastructure;
-using ProgettoPromemoria.Gateway.Infrastructure.Mongo;
-using ProgettoPromemoria.Gateway.Repositories;
-using ProgettoPromemoria.Core.Services;
+using GymGo.Configuration;
+using GymGo.Gateway.Infrastructure;
+using GymGo.Gateway.Infrastructure.Mongo;
 
-namespace ProgettoPromemoria.Bootstrap;
+namespace GymGo.Bootstrap;
 
 public class MongoDBModule : Module
 {

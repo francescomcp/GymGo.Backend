@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProgettoMemoria.Core\ProgettoPromemoria.Core.csproj" />
-    <ProjectReference Include="..\ProgettoPromemoria\ProgettoPromemoria.csproj" />
+    <ProjectReference Include="..\ProgettoMemoria.Core\GymGo.Core.csproj" />
+    <ProjectReference Include="..\ProgettoPromemoria\GymGo.csproj" />
   </ItemGroup>
 
 </Project>

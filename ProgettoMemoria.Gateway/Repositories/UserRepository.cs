@@ -1,14 +1,15 @@
 ﻿using MongoDB.Driver;
-using ProgettoPromemoria.Gateway.Infrastructure;
-using ProgettoPromemoria.Gateway.Models.User;
+using GymGo.Gateway.Infrastructure;
+using GymGo.Gateway.Models.User;
 
-namespace ProgettoPromemoria.Gateway.Repositories;
+namespace GymGo.Gateway.Repositories;
 
 public interface IUserRepository
 {
     Task<List<User>> GetAll();
     Task Save(PostUserRequest user);
     Task<User> GetById(string id);
+    Task<User> Authenticate(string username, string password);
 }
 public class UserRepository : IUserRepository
 {
@@ -18,6 +19,13 @@ public class UserRepository : IUserRepository
     {
         _connection = connection;
     }
+
+    public async Task<User> Authenticate(string username, string password)
+    {
+        var collection = _connection.GetReadyConnectionAsync().GetCollection<User>("Users");
+       return await collection.Find(u => u.UserName == username && u.Password == password).FirstOrDefaultAsync();
+    }
+
     public async Task<List<User>> GetAll()
     {
         var collection = _connection.GetReadyConnectionAsync().GetCollection<User>("Users");

@@ -12,8 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProgettoMemoria.Core\ProgettoPromemoria.Core.csproj" />
-    <ProjectReference Include="..\ProgettoMemoria.Gateway\ProgettoPromemoria.Gateway.csproj" />
+    <ProjectReference Include="..\ProgettoMemoria.Core\GymGo.Core.csproj" />
+    <ProjectReference Include="..\ProgettoMemoria.Gateway\GymGo.Gateway.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0" />
+	</ItemGroup>
 
 </Project>

@@ -1,10 +1,10 @@
-﻿namespace ProgettoPromemoria.Tests;
+﻿namespace GymGo.Tests;
 
 using Microsoft.AspNetCore.Http;
 using Moq;
 using NUnit.Framework;
-using ProgettoPromemoria.Core.Controllers;
-using ProgettoPromemoria.Core.Services;
+using GymGo.Core.Controllers;
+using GymGo.Core.Services;
 
 public class UsersControllerTests
 {

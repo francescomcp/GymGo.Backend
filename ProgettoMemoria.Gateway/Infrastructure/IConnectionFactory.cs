@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace ProgettoPromemoria.Gateway.Infrastructure;
+namespace GymGo.Gateway.Infrastructure;
 
 public interface IConnectionFactory
 {

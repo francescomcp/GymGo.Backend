@@ -1,8 +1,9 @@
-﻿using ProgettoPromemoria.Core.Services;
+﻿using GymGo.Core.Services;
 using Microsoft.AspNetCore.Mvc;
-using ProgettoPromemoria.Gateway.Models.User;
+using GymGo.Gateway.Models.User;
+using GymGo.Core.Helpers;
 
-namespace ProgettoPromemoria.Core.Controllers;
+namespace GymGo.Core.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -15,6 +16,25 @@ public class UserController : ControllerBase
         _service = service;
     }
 
+    [HttpPost("authenticate")]
+    public async Task<IActionResult> Authenticate(AuthenticateRequest model)
+    {
+        var response = await _service.Authenticate(model);
+
+        if (response == null)
+            return BadRequest(new { message = "Username or password is incorrect" });
+
+        return Ok(response);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Save(PostUserRequest user)
+    {
+        await _service.Save(user);
+        return NoContent();
+    }
+
+    [Authorize]
     [HttpGet("all")]
     public async Task<IActionResult> GetAll()
     {
@@ -24,6 +44,7 @@ public class UserController : ControllerBase
             : NotFound();
     }
 
+    [Authorize]
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetById(string Id)
     {
@@ -31,12 +52,5 @@ public class UserController : ControllerBase
         return result is not null
             ? Ok(result)
             : NotFound();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Save(PostUserRequest user)
-    {
-        await _service.Save(user);
-        return NoContent();
     }
 }

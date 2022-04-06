@@ -1,8 +1,8 @@
 ﻿using MongoDB.Driver;
-using ProgettoPromemoria.Gateway.Infrastructure;
-using ProgettoPromemoria.Gateway.Models.Memo;
+using GymGo.Gateway.Infrastructure;
+using GymGo.Gateway.Models.Memo;
 
-namespace ProgettoPromemoria.Gateway.Repositories;
+namespace GymGo.Gateway.Repositories;
 
 public interface IMemoRepository
 {
@@ -23,7 +23,17 @@ public class MemoRepository : IMemoRepository
     public async Task Save(PostMemoRequest memo)
     {
         var collection = _connection.GetReadyConnectionAsync().GetCollection<PostMemoRequest>("Memo");
-        await collection.InsertOneAsync(memo);
+        if (memo.DayOfWeek > 0 && memo.DayOfWeek < 8)
+        {
+            if (memo.Id == null)
+            {
+                await collection.InsertOneAsync(memo);
+            }
+            else
+            {
+                await collection.ReplaceOneAsync(x => x.Id == memo.Id, memo);
+            }
+        }
     }
 
     public async Task<List<Memo>> GetAll()

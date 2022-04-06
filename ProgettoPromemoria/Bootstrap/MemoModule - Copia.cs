@@ -1,11 +1,11 @@
 ﻿using Autofac;
-using ProgettoPromemoria.Configuration;
-using ProgettoPromemoria.Gateway.Infrastructure;
-using ProgettoPromemoria.Gateway.Infrastructure.Mongo;
-using ProgettoPromemoria.Gateway.Repositories;
-using ProgettoPromemoria.Core.Services;
+using GymGo.Configuration;
+using GymGo.Gateway.Infrastructure;
+using GymGo.Gateway.Infrastructure.Mongo;
+using GymGo.Gateway.Repositories;
+using GymGo.Core.Services;
 
-namespace ProgettoPromemoria.Bootstrap;
+namespace GymGo.Bootstrap;
 
 public class MemoModule : Module
 {
